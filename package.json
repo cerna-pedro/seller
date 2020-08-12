@@ -1,0 +1,14 @@
+{
+  "name": "seller",
+  "private": true,
+  "scripts": {
+    "installation": "concurrently \"cd frontend && npm install\" \"cd backend && npm install\"",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "cd frontend && npm start",
+    "server": "cd backend && npm start"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
+}

@@ -1,0 +1,259 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 0.85rem;
+  height: 0.85rem;
+  background-color: black;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0.1rem;
+  background: rgb(177, 213, 255);
+  box-shadow: inset 0 0 0.05rem rgb(77, 77, 77);
+}
+html {
+  font-family: "Open Sans", sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-size: 20px;
+}
+body {
+  background-color: rgb(245, 245, 245);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+}
+.container {
+  min-height: 100vh;
+}
+
+.container__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container__main-title {
+  padding: 1rem;
+}
+.nav__list {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: black;
+}
+.nav__list-item {
+  list-style: none;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.nav__list-item--link {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+.nav__list-item--link:hover {
+  color: gray;
+}
+.nav__list-item--link:active {
+  color: yellow;
+}
+
+.form-container {
+  margin: 1rem 0;
+  width: 600px;
+}
+
+.form-container button {
+  font-size: inherit;
+  font-family: inherit;
+  background: black;
+  padding: 0.5rem;
+  width: 100%;
+  color: white;
+  text-shadow: 2px 2px 2px rgb(77, 77, 77);
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.form-container :last-child button {
+  background: rgb(207, 0, 0);
+}
+
+.form-container__form-one {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-container__form-one input {
+  font-size: inherit;
+  font-family: inherit;
+  text-align: center;
+  border: rgb(177, 213, 255) 2px groove;
+  width: 100%;
+  padding: 0.2rem;
+}
+.form-container__form-two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.search-terms-container {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-terms-container__title {
+  padding: 1rem;
+}
+
+.search-terms-container__search-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.25rem 0;
+}
+
+.search-terms-container__form button {
+  font-size: inherit;
+  font-family: inherit;
+  background: rgb(207, 0, 0);
+  padding: 0.25rem;
+  color: white;
+  text-shadow: 2px 2px 2px rgb(77, 77, 77);
+  cursor: pointer;
+}
+
+.OfferUp__container {
+  background-color: rgb(0, 151, 113);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+  overflow-x: scroll;
+
+}
+
+.LetGo__container {
+  background-color: rgb(254, 58, 87);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: scroll;
+}
+.Facebook__container {
+  background-color: rgb(24, 118, 242);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.OfferUp__title {
+  padding: 1rem;
+  text-shadow: 1px 1px black;
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+  align-self: center;
+}
+
+.LetGo__title {
+  text-shadow: 1px 1px black;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+  align-self: center;
+}
+.Facebook__title {
+  text-shadow: 1px 1px black;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+  align-self: center;
+}
+
+.results__container {
+  display: flex;
+}
+
+.results__list-item {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.result__container {
+  color: black;
+  width: 350px;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.result__container * {
+  margin: 0.05rem 0;
+}
+
+.result__image {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  background: black;
+}
+
+.result__form {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.result__form button {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.result-item__container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 5px solid black;
+  border-radius: 20px;
+  margin: 1rem;
+  background-color: rgb(245, 245, 245);
+}
+
+.result__link {
+  color: black;
+  text-decoration-style: dotted;
+  transition: color 0.3s ease;
+  font-size: 1.5rem;
+}
+
+.result__link:hover {
+  color: gray;
+}
+
+.result__postdate {
+  margin-top: 1.5rem;
+}
