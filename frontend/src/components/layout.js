@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <div className="container">
-        <Header siteTitle="Eli's Money Maker" />
+        <Header siteTitle="Money Maker" />
         <main className="container__main">
           <h1 className="container__main-title">
             Eli's Money Maker
