@@ -1,5 +1,5 @@
 const formatPrice = (price) => {
-  const dollars = Math.trunc(price / 100);
+  const dollars = Math.floor(price / 100);
   return `$${dollars}`
 }
 

@@ -66,7 +66,9 @@ const seekFace = async (
                 '../static/placeholder.jpg',
               price:
                 parseInt(
-                  edge.node.listing.formatted_price.text.replace('$', '')
+                  edge.node.listing.formatted_price.text
+                    .replace('$', '')
+                    .replace(',', '')
                 ) * 100,
             };
           })
