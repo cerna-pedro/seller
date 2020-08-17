@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
         <Header siteTitle="Money Maker" />
         <main className="container__main">
           <h1 className="container__main-title">
-            Eli's Money Maker
+            Money Maker
             <span role="img" aria-label="Money bag">
               💰
             </span>

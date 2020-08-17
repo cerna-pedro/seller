@@ -11,6 +11,7 @@ db.connect('./db', [
   'searchResultsOfferUp',
   'searchResultsLetGo',
   'searchResultsFacebook',
+  'searchResultsNext',
 ]);
 
 const app = express();
@@ -24,11 +25,13 @@ callPromises();
 
 app.get('/listings/', async (req, res) => {
   const searchTerms = await db.searches.find();
+  const nextData = await db.searchResultsNext.find({ interested: true });
   const offerData = await db.searchResultsOfferUp.find({ interested: true });
   const letData = await db.searchResultsLetGo.find({ interested: true });
   const faceData = await db.searchResultsFacebook.find({ interested: true });
   const allData = {
     searchTerms: [...searchTerms],
+    Nextdoor:[...nextData],
     OfferUp: [...offerData],
     LetGo: [...letData],
     Facebook: [...faceData],
@@ -38,6 +41,9 @@ app.get('/listings/', async (req, res) => {
 
 app.get('/listings/not-interested/', async (req, res) => {
   const searchTerms = await db.searches.find();
+  const nextNotInterested = await db.searchResultsNext.find({
+    interested: false,
+  });
   const offerNotInterested = await db.searchResultsOfferUp.find({
     interested: false,
   });
@@ -49,6 +55,7 @@ app.get('/listings/not-interested/', async (req, res) => {
   });
   const allData = {
     searchTerms: [...searchTerms],
+    Nextdoor:[...nextNotInterested],
     OfferUp: [...offerNotInterested],
     LetGo: [...letNotInterested],
     Facebook: [...faceNotInterested],
@@ -72,6 +79,7 @@ app.post('/listings/remove/:word', async (req, res) => {
     await db.searchResultsFacebook.remove({ searchTerm: req.params.word });
     await db.searchResultsLetGo.remove({ searchTerm: req.params.word });
     await db.searchResultsOfferUp.remove({ searchTerm: req.params.word });
+    await db.searchResultsNext.remove({ searchTerm: req.params.word });
   }
 });
 
@@ -80,10 +88,12 @@ app.post('/listings/reset/', async (req, res) => {
   fs.writeFileSync('./db/searchResultsFacebook.json', '[]');
   fs.writeFileSync('./db/searchResultsLetGo.json', '[]');
   fs.writeFileSync('./db/searchResultsOfferUp.json', '[]');
+  fs.writeFileSync('./db/searchResultsNext.json', '[]');
   fs.writeFileSync('./db/searches.json', '[]');
   fs.writeFileSync('./db/searchResultsFacebook.json', '[]');
   fs.writeFileSync('./db/searchResultsLetGo.json', '[]');
   fs.writeFileSync('./db/searchResultsOfferUp.json', '[]');
+  fs.writeFileSync('./db/searchResultsNext.json', '[]');
 });
 
 app.post('/listings/interested/:id', async (req, res) => {
@@ -94,11 +104,12 @@ app.post('/listings/interested/:id', async (req, res) => {
   const query = {
     id: req.params.id,
   };
-  const item = await db.searchResultsOfferUp.findOne({ id: req.params.id }) || await db.searchResultsLetGo.findOne({ id: req.params.id }) || await db.searchResultsFacebook.findOne({ id: req.params.id })
+  const item = await db.searchResultsOfferUp.findOne({ id: req.params.id }) || await db.searchResultsLetGo.findOne({ id: req.params.id }) || await db.searchResultsFacebook.findOne({ id: req.params.id }) || await db.searchResultsNext.findOne({ id: req.params.id })
   const isInterested = item.interested
   await db.searchResultsOfferUp.update(query, { interested: !isInterested }, options);
   await db.searchResultsLetGo.update(query, { interested: !isInterested }, options);
   await db.searchResultsFacebook.update(query, { interested: !isInterested }, options);
+  await db.searchResultsNext.update(query, { interested: !isInterested }, options);
   res.redirect(req.get('referer'))
 });
 

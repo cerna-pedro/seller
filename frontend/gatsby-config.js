@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Eli's Money Maker`,
+    title: `Money Maker`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -16,8 +16,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Eli's Money Maker`,
-        short_name: `Eli's Money Maker`,
+        name: `Money Maker`,
+        short_name: `Money Maker`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#ffffff`,

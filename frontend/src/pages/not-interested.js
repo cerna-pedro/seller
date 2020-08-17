@@ -9,6 +9,7 @@ const SecondPage = () => {
   return (
     <Layout>
       <SEO title="Not Interested" />
+      <SearchResults platform="Nextdoor" data={data} title='Nextdoor' />
       <SearchResults platform="OfferUp" data={data} title='OfferUp' />
       <SearchResults platform="LetGo" data={data} title="letgo"/>
       <SearchResults platform="Facebook" data={data} title="Facebook"/>
