@@ -25,9 +25,9 @@ callPromises();
 
 app.get('/listings/', async (req, res) => {
   const searchTerms = await db.searches.find();
-  const nextData = await db.searchResultsNext.find({ interested: true });
-  const offerData = await db.searchResultsOfferUp.find({ interested: true });
-  const letData = await db.searchResultsLetGo.find({ interested: true });
+  const nextData = await db.searchResultsNext.find({ interested: true }).sort((a,b)=>b.postDate-a.postDate);
+  const offerData = await db.searchResultsOfferUp.find({ interested: true }).sort((a, b) => b.postDate - a.postDate);
+  const letData = await db.searchResultsLetGo.find({ interested: true }).sort((a, b) => b.postDate - a.postDate);
   const faceData = await db.searchResultsFacebook.find({ interested: true });
   const allData = {
     searchTerms: [...searchTerms],
@@ -43,13 +43,13 @@ app.get('/listings/not-interested/', async (req, res) => {
   const searchTerms = await db.searches.find();
   const nextNotInterested = await db.searchResultsNext.find({
     interested: false,
-  });
+  }).sort((a, b) => b.postDate - a.postDate);
   const offerNotInterested = await db.searchResultsOfferUp.find({
     interested: false,
-  });
+  }).sort((a, b) => b.postDate - a.postDate);
   const letNotInterested = await db.searchResultsLetGo.find({
     interested: false,
-  });
+  }).sort((a, b) => b.postDate - a.postDate);
   const faceNotInterested = await db.searchResultsFacebook.find({
     interested: false,
   });

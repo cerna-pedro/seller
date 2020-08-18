@@ -13,8 +13,9 @@ const IndexPage = () => {
       <SEO title="Home" />
       <AddNewSearch/>
       <SearchTerms />
-      <p>API calls occur every 2 minutes</p>
-      <p>Nextdoor searches are based on user profile, not Latitude and Longitude</p>
+      <p>⚠ API calls occur every 2 minutes.</p>
+      <p>⚠ Nextdoor searches are based on user profile, not Latitude and Longitude.</p>
+      <p>⚠ Order of Facebook searches is not guaranteed, since post dates are not available.</p>
       <SearchResults platform='Nextdoor' data={data} title="Nextdoor"/>
       <SearchResults platform='OfferUp' data={data} title="OfferUp"/>
       <SearchResults platform='LetGo' data={data} title="letgo"/>
