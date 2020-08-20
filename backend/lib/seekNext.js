@@ -12,16 +12,22 @@ const seekNext = async (query = 'bicycle') => {
     const url1 = `https://nextdoor.com/login/`;
     const url2 = `https://nextdoor.com/api/classifieds?page_from=0&query=${query}&sort_order=2`;
     const browser = await puppeteer.launch({
-      headless: true,
+      headless: false,
       slowMo: 50,
     });
     const page = await browser.newPage();
     await page.setUserAgent(agent);
-    const cookiesString = await fs.readFileSync('./cookies.json');
-    const existingCookies = JSON.parse(cookiesString);
-    const dateToCompare =
+    let dateToCompare;
+    let existingCookies;
+    try {
+      const cookiesString = await fs.readFileSync('./cookies.json');
+      existingCookies = JSON.parse(cookiesString);
+      dateToCompare =
       existingCookies.find((cookie) => cookie.name === 'flaskTrackReferrer')
-        .expires * 1000;
+      .expires * 1000;
+    } catch (e) {
+      dateToCompare = 0;
+    }
     if (Date.now() >= dateToCompare) {
       await page.goto(url1, { waitUntil: 'networkidle2' });
       await page.waitForSelector('#id_email');
