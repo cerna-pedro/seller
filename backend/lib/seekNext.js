@@ -12,7 +12,7 @@ const seekNext = async (query = 'bicycle') => {
     const url1 = `https://nextdoor.com/login/`;
     const url2 = `https://nextdoor.com/api/classifieds?page_from=0&query=${query}&sort_order=2`;
     const browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
       slowMo: 50,
     });
     const page = await browser.newPage();
